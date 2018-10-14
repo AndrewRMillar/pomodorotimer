@@ -10,7 +10,7 @@
   var denied = document.querySelector(".denied");
   session.setItem("number", 0);
   
-  console.log("version 0.8");
+  console.log("version 0.81");
 
   window.onload = function() {init()}
   // window.addEventListener("load", init());
@@ -19,20 +19,27 @@
     // Check if the browser supports notifications
     if (!("Notification" in window)) {
       denied.textContent = "The functionality of this service will be severely limited without notifications";
+      console.log("Unsupported");
       return; // no notification option
       
     } else if (Notification.permission === "granted") {
-      // Notifications have already been granted, action needed
+      // Notifications have already been granted, remove text
+      console.log("granted");
+      denied.classList.add("hide");
+      window.setTimeout(() => denied.style.visibility = "hidden", 500);
+      return;
     } else if (Notification.permission === 'denied') {
+      console.log("Denied");
       denied.textContent = "The functionality of this service will be severely limited without notifications";
       return;
     } else if (Notification.permission !== 'denied') {
       // If the permission has also not been set to denied, request permission
+      console.log("Unset");
       Notification.requestPermission(function (permission) {
         if (permission === "granted") {
           // The user is allowing notifications
           denied.classList.add("hide");
-          window.setTimeout(() => denied.style.visibility = "hidden", 500)
+          window.setTimeout(() => denied.style.visibility = "hidden", 500);
         } else {
           // User disallows notifications, highlight limited function
           notify = false; // just in case, not using atm
@@ -65,9 +72,9 @@
   function notifyTimesUp() {
     // Depending on the nuber of pomodoro's return a sertain notification
     if (getSessionVal() % 4 === 0) {
-      new Notification("That were 4 pomodoro's take a longer break, say 20 or 30 minutes");
+      new Notification("That were 4 pomodoro's, take a longer break. About 20 or 30 minutes");
     } else { 
-      new Notification("Times Up, take a short break");
+      new Notification("You have completed one pomodoro, take a short break");
     }
   }
 
@@ -82,15 +89,15 @@
   const timeFormatted = function() {
     // Return a template string with the minutes and seconds still to go
     time.min = Math.floor(time.tot / 60);
+    time.min = time.min < 10? time.min = `0${time.min}`: time.min;
     time.sec = time.tot % 60;
-    time.sec < 10? time.sec = '0' + time.sec: time.sec = time.sec;
+    time.sec = time.sec < 10? time.sec = `0${time.sec}`: time.sec;
     return `${time.min} : ${time.sec}`;
   }
 
 
   const timer = function() {
   // Start timer, only side effects
-  // time not set, then set time anew
   !time.tot? time.tot = amount: time.tot = time.tot; 
   // Start time interval
   timeInt = setInterval(() => {
@@ -100,7 +107,6 @@
     timeEl.innerHTML = timeFormatted();
     // If time has reached 0, unset the timeinterval, reset the app and alert the user
     if (time.tot <= 0) {
-      // timeInt = undefined;
       incrementSession();
       notifyTimesUp(event);
       clear('time end');
@@ -108,23 +114,23 @@
   }, 1000);
   }
     
-  // Sounds
-  function sound(type) {
-    var ring = new Audio('ring.mp3');
-    var wind = new Audio('wind.mp3');
-    type === "ring"? ring.play(): wind.play();
-  }
+  // Sounds, maybe later
+  // function sound(type) {
+  //   var ring = new Audio('ring.mp3');
+  //   var wind = new Audio('wind.mp3');
+  //   type === "ring"? ring.play(): wind.play();
+  // }
   
   // Event listeners
   document.querySelector(".stop-timer").addEventListener("click", () => {
-    sound("ring");
+    // sound("ring");
     console.log('Stop time button');
     clearInterval(timeInt);
   });
   document.querySelector(".set-timer").addEventListener("click", () => {
     console.log('Start time button');
     // console.log(time.tot);
-    sound("wind")
+    // sound("wind")
     timer();
   });
   document.querySelector(".clear-timer").addEventListener("click", () => {

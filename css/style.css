@@ -19,6 +19,13 @@ h1, h2 {
 h2 {
   font-size: 2em;
 }
+a:link, a:hover, a:active, a:focus, a:visited {
+  color: #c54949;
+}
+a:hover {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}
 
 .container {
   font-family: sans-serif;
@@ -67,7 +74,7 @@ section.timer {
   border-radius: 10px;
   transition: all .5s;
   border: 3px solid #ca4646;
-  box-shadow: 0 0 20px #c54949, inset 0 0 200px #c54949;
+  box-shadow: 0 0 20px #c54949, 0 22px 41px -15px #000, inset 0 0 200px #c54949;
 }
 .timeleft {
   display: block;
