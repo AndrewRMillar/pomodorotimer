@@ -7,10 +7,10 @@
   var timeInt, time = {tot: amount, min: 0, sec: 0}; 
   const timeEl = document.querySelector(".timeleft");
   var session = sessionStorage;
+  var denied = document.querySelector(".denied");
   session.setItem("number", 0);
   
-  console.log("version 0.7");
-  let notify = false;
+  console.log("version 0.8");
 
   window.onload = function() {init()}
   // window.addEventListener("load", init());
@@ -18,22 +18,25 @@
   function requestNotification() {
     // Check if the browser supports notifications
     if (!("Notification" in window)) {
-      document.querySelector(".denied").style.fontColor = "red";
+      denied.textContent = "The functionality of this service will be severely limited without notifications";
       return; // no notification option
-
+      
     } else if (Notification.permission === "granted") {
       // Notifications have already been granted, action needed
-
+    } else if (Notification.permission === 'denied') {
+      denied.textContent = "The functionality of this service will be severely limited without notifications";
+      return;
     } else if (Notification.permission !== 'denied') {
       // If the permission has also not been set to denied, request permission
       Notification.requestPermission(function (permission) {
         if (permission === "granted") {
           // The user is allowing notifications
-          notify = true;
+          denied.classList.add("hide");
+          window.setTimeout(() => denied.style.visibility = "hidden", 500)
         } else {
           // User disallows notifications, highlight limited function
           notify = false; // just in case, not using atm
-          document.querySelector(".denied").style.color = "red";
+          denied.textContent = "The functionality of this service will be severely limited without notifications";
         }
       });
     }
@@ -42,16 +45,17 @@
 
   const init = function() {
     // Initiate the script
-    console.log(amount);
+    // console.log(amount);
+
     // update the DOM to the amount of time which is set
     timeEl.innerHTML = timeFormatted();
     requestNotification();
   }
 
   const incrementSession = function() {
-    let session = session.getItem("number");
-    session++;
-    session.setItem("number", session);
+    let number = session.getItem("number");
+    number++;
+    session.setItem("number", number);
   }
   
   const getSessionVal = function() {
@@ -61,7 +65,7 @@
   function notifyTimesUp() {
     // Depending on the nuber of pomodoro's return a sertain notification
     if (getSessionVal() % 4 === 0) {
-      new Notification("That were 4 pomodoro's take a longer break, 20 or 30 minutes");
+      new Notification("That were 4 pomodoro's take a longer break, say 20 or 30 minutes");
     } else { 
       new Notification("Times Up, take a short break");
     }
@@ -119,7 +123,7 @@
   });
   document.querySelector(".set-timer").addEventListener("click", () => {
     console.log('Start time button');
-    console.log(time.tot);
+    // console.log(time.tot);
     sound("wind")
     timer();
   });

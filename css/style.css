@@ -65,6 +65,7 @@ section.timer {
   background-color: #ff5d5d;
   color: white;
   border-radius: 10px;
+  transition: all .5s;
   border: 3px solid #ca4646;
   box-shadow: 0 0 20px #c54949, inset 0 0 200px #c54949;
 }
@@ -95,7 +96,7 @@ button.set-timer:active {
   border-top: 2px solid #b4b4b4;
 }
 .pomodoro h1 {
-  font-size: 3em;
+  font-size: 4em;
   font-weight: 500;
   color: #b5b9c3;
 }
@@ -109,4 +110,14 @@ button.set-timer:active {
 .pomodoro div {
   padding: 0 0 25px;
   border-bottom: 1px dashed darkgrey;
+}
+.denied {
+  transition: all .5s;
+  margin: 0;
+  font-size: .8em;
+  height: auto;
+}
+.hide {
+  height: 0;
+  opacity: 0;
 }
