@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <main class="container"> 
+
+    <header id="Pomadoro" class="flex-col-cen">
+      <h1>Pomadoro</h1>
+      <h2>Pomodoro time management <a href="https://francescocirillo.com/pages/pomodoro-technique">Pomodoro Technique</a></h2>
+      <h3 class="denied">We will ask for permission to notify you when the time is up.</h3>
+    </header>
+
+    <div class="flex-col-cen timer"> 
+      <!-- 
+        this used to be a section but for some reason a margin-rigth was added
+        that is the only reason I made this a div
+      -->
+      <div class="top-timer flex-col-cen">
+        <div class="time-container">
+          <span class="timeleft"></span>
+        </div>
+        <div class="controls flex-row-cen">
+          <button class="set-timer">START</button>
+          <button class="stop-timer">STOP</button>
+          <button class="clear-timer">CLEAR</button>
+        </div>
+      </div>
+    </div>
+    <div class="pomodoro flex-col-cen">
+      <h1>
+        The fundamentals of the Pomodoro Technique are simple yet incredibly effective
+      </h1>
+      <p>The process underlying the Pomodoro Technique consists of 6 steps:</p>
+      <div>
+        <h2>1. <span>Choose a task</span> you'd like to get done</h2>
+        <p>
+          Something big, something small, something you’ve been putting off 
+          for a million years: it doesn’t matter. What matters is that it’s 
+          something that deserves your full, undivided attention.
+        </p>
+      </div>
+      <div>
+        <h2>2. <span>Set the Pomodoro</span> for 25 minutes</h2>
+        <p>
+          Make a small oath to yourself: I will spend 25 minutes on this task and I 
+          will not interrupt myself. You can do it! After all, it’s just 25 minutes.
+        </p>
+      </div>
+      <div>
+        <h2>3. <span>Work on the task</span> until the Pomodoro rings</h2>
+        <p>
+            Immerse yourself in the task for the next 25 minutes. If you suddenly realize 
+            you have something else you need to do, write the task down on a sheet of paper.
+        </p>
+      </div>
+      <div>
+        <h2>4. When the Pomodoro rings, <span>put a checkmark</span> on a paper</h2>
+        <p>Congratulations! You’ve spent an entire, interruption-less Pomodoro on a task.</p>
+      </div>
+      <div>
+        <h2>5. <span>Take a short break</span> on a paper</h2>
+        <p>
+          Breathe, meditate, grab a cup of coffee, go for a short walk or do something else 
+          relaxing (i.e., not work-related). Your brain will thank you later.
+        </p>
+      </div>
+      <div>
+        <h2>6. Every 4 pomodoros, <span>take a longer break</span> on a paper</h2>
+        <p>
+            Once you’ve completed four pomodoros, you can take a longer break. 20 minutes 
+            is good. Or 30. Your brain will use this time to assimilate new information and rest 
+            before the next round of Pomodoros.
+        </p>
+      </div>
+    </div>
+    
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>
