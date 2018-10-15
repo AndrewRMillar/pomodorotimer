@@ -18,7 +18,7 @@
   function requestNotification() {
     // Check if the browser supports notifications
     if (!("Notification" in window)) {
-      denied.textContent = "The functionality of this service will be severely limited without notifications";
+      denied.textContent = "Your browser does not support notifications. I advise to install a modern browser like Chrome Firefoz Opera or use Microsoft Edge";
       console.log("Unsupported");
       return; // no notification option
       
@@ -42,6 +42,7 @@
           window.setTimeout(() => denied.style.visibility = "hidden", 500);
         } else {
           // User disallows notifications, highlight limited function
+          console.log("denied");
           notify = false; // just in case, not using atm
           denied.textContent = "The functionality of this service will be severely limited without notifications";
         }
@@ -73,8 +74,12 @@
     // Depending on the nuber of pomodoro's return a sertain notification
     if (getSessionVal() % 4 === 0) {
       new Notification("That were 4 pomodoro's, take a longer break. About 20 or 30 minutes");
-    } else { 
-      new Notification("You have completed one pomodoro, take a short break");
+    } else if(getSessionVal() % 3 === 0) { 
+      new Notification("You have completed tree pomodoro's, take a short break");
+    } else if(getSessionVal() % 2 === 0) { 
+      new Notification("You have completed two pomodoro's, take a short break");
+    } else {
+      new Notification("You have completed a pomodoro, take a short break");
     }
   }
 
