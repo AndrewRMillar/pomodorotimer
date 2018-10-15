@@ -3,7 +3,7 @@
   // timeInt, time and timeEl need to be globals because they need to 
   // be accessed outside of the function scope 
 
-  var amount = 5; // 25 minuter * 60 seconden 
+  var amount = 1500; // 25 minuter * 60 seconden 
   var timeInt, time = {tot: amount, min: 0, sec: 0}; 
   const timeEl = document.querySelector(".timeleft");
   var session = sessionStorage;
