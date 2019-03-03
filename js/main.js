@@ -1,16 +1,18 @@
 (function(){
 
+  // TODO: Add a time for the break, either 5 min of 30 min depending on the number of pomodoro's
+
   // timeInt, time and timeEl need to be globals because they need to 
   // be accessed outside of the function scope 
 
-  var amount = 1500; // 25 minuter * 60 seconden 
-  var timeInt, time = {tot: amount, min: 0, sec: 0}; 
+  let amount = 1500, // 25 minutes * 60 seconds 
+      timeInt, time = {tot: amount, min: 0, sec: 0}, 
+      session = sessionStorage,
+      denied = document.querySelector(".denied");
   const timeEl = document.querySelector(".timeleft");
-  var session = sessionStorage;
-  var denied = document.querySelector(".denied");
   session.setItem("number", 0);
   
-  console.log("version 0.81");
+  console.log("version 0.91");
 
   window.onload = function() {init()}
   // window.addEventListener("load", init());
@@ -100,31 +102,47 @@
     return `${time.min} : ${time.sec}`;
   }
 
+  // This time using a callibrated setTimeout function
+  const doTimer = function(length, oninstance, oncomplete) {
+    var steps = (length / 100) / 10,
+        speed = length / steps,
+        count = 0,
+        start = new Date().getTime();
+
+    function instance() {
+        if(count++ == steps) {
+            oncomplete(steps, count);
+        }
+        else {
+            oninstance(steps, count);
+            var diff = (new Date().getTime() - start) - (count * speed);
+            timeInt = setTimeout(instance, (speed - diff));
+        }
+    } 
+    window.setTimeout(instance, speed);
+  }
 
   const timer = function() {
-  // Start timer, only side effects
-  !time.tot? time.tot = amount: time.tot = time.tot; 
-  // Start time interval
-  timeInt = setInterval(() => {
-    console.log(`${time.tot}`);          
-    // Has time reached 1 reduce time by one, don't let time become negative
-    time.tot >= 1? time.tot--: time.tot = 0;
-    timeEl.innerHTML = timeFormatted();
-    // If time has reached 0, unset the timeinterval, reset the app and alert the user
-    if (time.tot <= 0) {
+    doTimer(time.tot, () => {
+      time.tot >= 1? time.tot--: time.tot = 0;
+      timeEl.innerHTML = timeFormatted();
+    },  () => {
       incrementSession();
       notifyTimesUp(event);
       clear('time end');
-    }
-  }, 1000);
+    });
   }
+
+
+
+
     
   // Sounds, maybe later
-  // function sound(type) {
-  //   var ring = new Audio('ring.mp3');
-  //   var wind = new Audio('wind.mp3');
-  //   type === "ring"? ring.play(): wind.play();
-  // }
+  function sound(type) {
+    var ring = new Audio('ring.mp3');
+    var wind = new Audio('wind.mp3');
+    type === "ring"? ring.play(): wind.play();
+  }
   
   // Event listeners
   document.querySelector(".stop-timer").addEventListener("click", () => {
@@ -134,7 +152,6 @@
   });
   document.querySelector(".set-timer").addEventListener("click", () => {
     console.log('Start time button');
-    // console.log(time.tot);
     // sound("wind")
     timer();
   });
@@ -144,4 +161,3 @@
   });
 
 })();
-
