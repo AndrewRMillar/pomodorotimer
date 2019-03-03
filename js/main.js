@@ -75,13 +75,13 @@
   function notifyTimesUp() {
     // Depending on the nuber of pomodoro's return a sertain notification
     if (getSessionVal() % 4 === 0) {
-      new Notification("That were 4 pomodoro's, take a longer break. About 20 or 30 minutes");
+      new Notification("Pomodoro Timer", {body:"That were 4 pomodoro's, take a longer break. About 20 or 30 minutes", icon:"./img/tomato.jpg"});
     } else if(getSessionVal() % 3 === 0) { 
-      new Notification("You have completed tree pomodoro's, take a short break");
+      new Notification("Pomodoro Timer", {body:"You have completed tree pomodoro's, take a short break", icon:"./img/tomato.jpg"});
     } else if(getSessionVal() % 2 === 0) { 
-      new Notification("You have completed two pomodoro's, take a short break");
+      new Notification("Pomodoro Timer", {body:"You have completed two pomodoro's, take a short break", icon:"./img/tomato.jpg"});
     } else {
-      new Notification("You have completed a pomodoro, take a short break");
+      new Notification("Pomodoro Timer", {body:"You have completed a pomodoro, take a short break", icon:"./img/tomato.jpg"});
     }
   }
 
