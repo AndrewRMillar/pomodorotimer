@@ -141,6 +141,6 @@ footer {
   align-items: center;
   align-content: center;  
 }
-footer a:link {
+footer a:link, footer a:visited, footer a:active {
   color: white;
 }
