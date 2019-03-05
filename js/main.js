@@ -1,16 +1,16 @@
 (function(){
 
   // TODO: Add a time for the break, either 5 min of 30 min depending on the number of pomodoro's
+  // TODO: Add sounds of winding a timer and the sound of ringing when timer ends
 
   // timeInt, time and timeEl need to be globals because they need to 
   // be accessed outside of the function scope 
 
-  let amount = 1500, // 25 minutes * 60 seconds 
+  let amount = 5, // 25 minutes * 60 seconds 
       timeInt, time = {tot: amount, min: 0, sec: 0}, 
-      session = sessionStorage,
       denied = document.querySelector(".denied");
   const timeEl = document.querySelector(".timeleft");
-  session.setItem("number", 0);
+  sessionStorage.setItem("number", 0);
   
   console.log("version 0.91");
 
@@ -61,27 +61,32 @@
     timeEl.innerHTML = timeFormatted();
     requestNotification();
   }
-
-  const incrementSession = function() {
-    let number = session.getItem("number");
-    number++;
-    session.setItem("number", number);
-  }
   
   const getSessionVal = function() {
-    return session.getItem("number");
+    return sessionStorage.getItem("number");
+  }
+
+  const incrementSession = function() {
+    let number = getSessionVal();
+    number++;
+    sessionStorage.setItem("number", number);
   }
 
   function notifyTimesUp() {
-    // Depending on the nuber of pomodoro's return a sertain notification
+    // Play the the ring and depending on the nuber of pomodoro's return a sertain notification
+    sound("ring");
     if (getSessionVal() % 4 === 0) {
       new Notification("Pomodoro Timer", {body:"That were 4 pomodoro's, take a longer break. About 20 or 30 minutes", icon:"./img/tomato.jpg"});
+      return;
     } else if(getSessionVal() % 3 === 0) { 
       new Notification("Pomodoro Timer", {body:"You have completed tree pomodoro's, take a short break", icon:"./img/tomato.jpg"});
+      return;
     } else if(getSessionVal() % 2 === 0) { 
       new Notification("Pomodoro Timer", {body:"You have completed two pomodoro's, take a short break", icon:"./img/tomato.jpg"});
+      return;
     } else {
       new Notification("Pomodoro Timer", {body:"You have completed a pomodoro, take a short break", icon:"./img/tomato.jpg"});
+      return;
     }
   }
 
@@ -110,49 +115,47 @@
         start = new Date().getTime();
 
     function instance() {
-        if(count++ == steps) {
-            oncomplete(steps, count);
-        }
-        else {
-            oninstance(steps, count);
-            var diff = (new Date().getTime() - start) - (count * speed);
-            timeInt = setTimeout(instance, (speed - diff));
-        }
+      console.log(count, steps * 1000);
+      if(count++ == steps * 1000) {
+          oncomplete();
+      }
+      else {
+          oninstance(steps, count);
+          var diff = (new Date().getTime() - start) - (count * speed);
+          timeInt = setTimeout(instance, (speed - diff));
+      }
     } 
     window.setTimeout(instance, speed);
   }
 
   const timer = function() {
     doTimer(time.tot, () => {
+      // console.log(time.tot);
       time.tot >= 1? time.tot--: time.tot = 0;
       timeEl.innerHTML = timeFormatted();
     },  () => {
+      console.log('times up');
       incrementSession();
-      notifyTimesUp(event);
+      notifyTimesUp();
       clear('time end');
     });
   }
-
-
-
-
     
   // Sounds, maybe later
   function sound(type) {
-    var ring = new Audio('ring.mp3');
-    var wind = new Audio('wind.mp3');
+    const ring = new Audio('./sounds/ring.mp3');
+    const wind = new Audio('./sounds/wind.mp3');
     type === "ring"? ring.play(): wind.play();
   }
   
   // Event listeners
   document.querySelector(".stop-timer").addEventListener("click", () => {
-    // sound("ring");
     console.log('Stop time button');
     clearInterval(timeInt);
   });
   document.querySelector(".set-timer").addEventListener("click", () => {
     console.log('Start time button');
-    // sound("wind")
+    sound("wind")
     timer();
   });
   document.querySelector(".clear-timer").addEventListener("click", () => {
