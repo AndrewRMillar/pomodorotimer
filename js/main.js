@@ -21,22 +21,22 @@
     // Check if the browser supports notifications
     if (!("Notification" in window)) {
       denied.textContent = "Your browser does not support notifications. I advise to install a modern browser like Chrome Firefoz Opera or use Microsoft Edge";
-      console.log("Unsupported");
+      // console.log("Unsupported");
       return; // no notification option
       
     } else if (Notification.permission === "granted") {
       // Notifications have already been granted, remove text
-      console.log("granted");
+      // console.log("granted");
       denied.classList.add("hide");
       window.setTimeout(() => denied.style.visibility = "hidden", 500);
       return;
     } else if (Notification.permission === 'denied') {
-      console.log("Denied");
+      // console.log("Denied");
       denied.textContent = "The functionality of this service will be severely limited without notifications";
       return;
     } else if (Notification.permission !== 'denied') {
       // If the permission has also not been set to denied, request permission
-      console.log("Unset");
+      // console.log("Unset");
       Notification.requestPermission(function (permission) {
         if (permission === "granted") {
           // The user is allowing notifications
@@ -44,7 +44,7 @@
           window.setTimeout(() => denied.style.visibility = "hidden", 500);
         } else {
           // User disallows notifications, highlight limited function
-          console.log("denied");
+          // console.log("denied");
           notify = false; // just in case, not using atm
           denied.textContent = "The functionality of this service will be severely limited without notifications";
         }
@@ -115,7 +115,7 @@
         start = new Date().getTime();
 
     function instance() {
-      console.log(count, steps * 1000);
+      // console.log(count, steps * 1000);
       if(count++ == steps * 1000) {
           oncomplete();
       }
@@ -150,17 +150,18 @@
   
   // Event listeners
   document.querySelector(".stop-timer").addEventListener("click", () => {
-    console.log('Stop time button');
+    // console.log('Stop time button');
     clearInterval(timeInt);
   });
   document.querySelector(".set-timer").addEventListener("click", () => {
-    console.log('Start time button');
+    // console.log('Start time button');
     sound("wind")
     timer();
   });
   document.querySelector(".clear-timer").addEventListener("click", () => {
-    console.log('Clear button');
+    // console.log('Clear button');
     clear('button');
+    sound("ring");
   });
 
 })();

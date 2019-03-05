@@ -9,6 +9,7 @@ html, body {
 }
 body {
   background: #fffafa;
+  overflow-x: hidden;
 }
 
 h1, h2 {
@@ -127,4 +128,19 @@ button.set-timer:active {
 .hide {
   height: 0;
   opacity: 0;
+}
+
+footer {
+  background-color: lightcoral;
+  color: white;
+  width: 100vw;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;  
+}
+footer a:link {
+  color: white;
 }
