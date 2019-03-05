@@ -6,7 +6,7 @@
   // timeInt, time and timeEl need to be globals because they need to 
   // be accessed outside of the function scope 
 
-  let amount = 5, // 25 minutes * 60 seconds 
+  let amount = 1500, // 25 minutes * 60 seconds 
       timeInt, time = {tot: amount, min: 0, sec: 0}, 
       denied = document.querySelector(".denied");
   const timeEl = document.querySelector(".timeleft");
