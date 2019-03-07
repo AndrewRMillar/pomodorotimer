@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="apple-mobile-web-app-title" content="Pomodoro">
+  <meta name="application-name" content="Pomodoro">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <main class="container flex-col-cen"> 
+
+    <header id="Pomadoro" class="flex-col-cen">
+      <h1>Pomodoro Timer</h1>
+      <h2>Pomodoro time management <a href="https://francescocirillo.com/pages/pomodoro-technique">Pomodoro Technique</a></h2>
+    </header>
+    
+    <section class="flex-col-cen timer"> 
+      <div class="top-timer flex-col-cen">
+        <p class="denied">We will ask for permission to notify you when the time is up, on first page load.</p>
+        <div class="time-container">
+          <span class="timeleft"></span>
+        </div>
+        <div class="controls flex-row-cen">
+          <button class="set-timer">START</button>
+          <button class="stop-timer">STOP</button>
+          <button class="clear-timer">CLEAR</button>
+        </div>
+      </div>
+    </section>
+    <section class="pomodoro flex-col-cen">
+      <h1>
+        The fundamentals of the Pomodoro Technique are simple yet incredibly effective
+        <small style="font-size: 14px">Text from <a href="https://francescocirillo.com/pages/pomodoro-technique">Pomodoro page</a></small>
+      </h1>
+      <p>The process underlying the Pomodoro Technique consists of 6 steps:</p>
+      <div>
+        <h2>1. <span>Choose a task</span> you'd like to get done</h2>
+        <p>
+          Something big, something small, something you’ve been putting off 
+          for a million years: it doesn’t matter. What matters is that it’s 
+          something that deserves your full, undivided attention.
+        </p>
+      </div>
+      <div>
+        <h2>2. <span>Set the Pomodoro</span> for 25 minutes</h2>
+        <p>
+          Make a small oath to yourself: I will spend 25 minutes on this task and I 
+          will not interrupt myself. You can do it! After all, it’s just 25 minutes.
+        </p>
+      </div>
+      <div>
+        <h2>3. <span>Work on the task</span> until the Pomodoro rings</h2>
+        <p>
+            Immerse yourself in the task for the next 25 minutes. If you suddenly realize 
+            you have something else you need to do, write the task down on a sheet of paper.
+        </p>
+      </div>
+      <div>
+        <h2>4. When the Pomodoro rings, <span>put a checkmark</span> on a paper</h2>
+        <p>Congratulations! You’ve spent an entire, interruption-less Pomodoro on a task.</p>
+      </div>
+      <div>
+        <h2>5. <span>Take a short break</span> on a paper</h2>
+        <p>
+          Breathe, meditate, grab a cup of coffee, go for a short walk or do something else 
+          relaxing (i.e., not work-related). Your brain will thank you later.
+        </p>
+      </div>
+      <div>
+        <h2>6. Every 4 pomodoros, <span>take a longer break</span> on a paper</h2>
+        <p>
+            Once you’ve completed four pomodoros, you can take a longer break. 20 minutes 
+            is good. Or 30. Your brain will use this time to assimilate new information and rest 
+            before the next round of Pomodoros.
+        </p>
+      </div>
+    </section>
+    <footer>
+      <p>
+        The <a href="https://github.com/Sl4rtyb4rtf4st/pomodorotimer">repo</a> for this project is servered by <a href="https://pages.github.com/">github pages</a>.
+      </p>
+    </footer>
+    
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>
