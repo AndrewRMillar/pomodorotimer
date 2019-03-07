@@ -12,7 +12,7 @@
   const timeEl = document.querySelector(".timeleft");
   sessionStorage.setItem("number", 0);
   
-  console.log("version 0.91");
+  console.log("version 0.95");
 
   window.onload = function() {init()}
   // window.addEventListener("load", init());
@@ -115,7 +115,7 @@
         start = new Date().getTime();
 
     function instance() {
-      // console.log(count, steps * 1000);
+      console.log(count, steps * 1000);
       if(count++ == steps * 1000) {
           oncomplete();
       }
