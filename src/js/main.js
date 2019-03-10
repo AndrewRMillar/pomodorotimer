@@ -1,7 +1,7 @@
 (function(){
+  // Placing code inside self executing function to encapsulate code and not create globals
 
   // TODO: Add a time for the break, either 5 min of 30 min depending on the number of pomodoro's
-  // TODO: Add sounds of winding a timer and the sound of ringing when timer ends
 
   // timeInt, time and timeEl need to be globals because they need to 
   // be accessed outside of the function scope 
@@ -17,26 +17,22 @@
   window.onload = function() {init()}
   // window.addEventListener("load", init());
 
-  function requestNotification() {
+  const requestNotification = function() {
     // Check if the browser supports notifications
     if (!("Notification" in window)) {
       denied.textContent = "Your browser does not support notifications. I advise to install a modern browser like Chrome Firefoz Opera or use Microsoft Edge";
-      // console.log("Unsupported");
       return; // no notification option
       
     } else if (Notification.permission === "granted") {
       // Notifications have already been granted, remove text
-      // console.log("granted");
       denied.classList.add("hide");
       window.setTimeout(() => denied.style.visibility = "hidden", 500);
       return;
     } else if (Notification.permission === 'denied') {
-      // console.log("Denied");
       denied.textContent = "The functionality of this service will be severely limited without notifications";
       return;
     } else if (Notification.permission !== 'denied') {
       // If the permission has also not been set to denied, request permission
-      // console.log("Unset");
       Notification.requestPermission(function (permission) {
         if (permission === "granted") {
           // The user is allowing notifications
@@ -44,7 +40,6 @@
           window.setTimeout(() => denied.style.visibility = "hidden", 500);
         } else {
           // User disallows notifications, highlight limited function
-          // console.log("denied");
           notify = false; // just in case, not using atm
           denied.textContent = "The functionality of this service will be severely limited without notifications";
         }
@@ -55,24 +50,23 @@
 
   const init = function() {
     // Initiate the script
-    // console.log(amount);
-
-    // update the DOM to the amount of time which is set
     timeEl.innerHTML = timeFormatted();
     requestNotification();
   }
   
   const getSessionVal = function() {
+    // Retrieve the number of pomodoro's already achieved
     return sessionStorage.getItem("number");
   }
 
   const incrementSession = function() {
+    // Increase the number of pomodoro in the browser session
     let number = getSessionVal();
     number++;
     sessionStorage.setItem("number", number);
   }
 
-  function notifyTimesUp() {
+  const notifyTimesUp = function() {
     // Play the the ring and depending on the nuber of pomodoro's return a sertain notification
     sound("ring");
     if (getSessionVal() % 4 === 0) {
@@ -142,7 +136,7 @@
   }
     
   // Sounds, maybe later
-  function sound(type) {
+  const sound = function(type) {
     const ring = new Audio('./sounds/ring.mp3');
     const wind = new Audio('./sounds/wind.mp3');
     type === "ring"? ring.play(): wind.play();
