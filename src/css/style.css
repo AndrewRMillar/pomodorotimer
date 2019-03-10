@@ -78,6 +78,7 @@ div.timer {
   align-content: center;
   justify-content: center;
   width: 80%;
+  max-width: 700px;
   padding: 4rem;
   background-color: #ff5d5d;
   color: white;
