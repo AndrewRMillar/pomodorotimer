@@ -12,4 +12,4 @@ To use the Gulp version run:
 npm install
 gulp
 ```
-You can run `gulp watch` when you wish to change 
+You can run `gulp watch` when you wish to code the repo and have live reload functionality 
