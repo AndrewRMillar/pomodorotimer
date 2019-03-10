@@ -1,4 +1,4 @@
-# Pomodoro Timer
+# ![Tomato](https://github.com/Sl4rtyb4rtf4st/pomodorotimer/blob/master/favicon-32x32.png?raw=true) Pomodoro Timer
 A timer app for the [pomodoro](https://francescocirillo.com/pages/pomodoro-technique) time management technique, with notifications on completion of the timer.
 The page includes a relatively short explanation on the Pomodoro technique copied from the official documentation 
 
@@ -12,4 +12,4 @@ To use the Gulp version run:
 npm install
 gulp
 ```
-You can run `gulp watch` when you wish to change 
+You can run `gulp watch` when you wish to code the repo and have live reload functionality 
