@@ -29,6 +29,7 @@
       window.setTimeout(() => denied.style.visibility = "hidden", 500);
       return;
     } else if (Notification.permission === 'denied') {
+      // Notifications have been denied, change text to reflect choice
       denied.textContent = "The functionality of this service will be severely limited without notifications";
       return;
     } else if (Notification.permission !== 'denied') {
