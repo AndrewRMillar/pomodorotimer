@@ -3,3 +3,5 @@ A timer app for the [pomodoro](https://francescocirillo.com/pages/pomodoro-techn
 The page includes a relatively short explanation on the Pomodoro technique copied from the official documentation 
 
 [Link](https://sl4rtyb4rtf4st.github.io/pomodorotimer/) to the github page version of the timer
+
+Continuing the development in the [gulp-dist](https://github.com/Sl4rtyb4rtf4st/pomodorotimer/tree/gulp-dist) branch.
