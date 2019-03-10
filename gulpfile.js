@@ -5,6 +5,7 @@ const cleanCSS = require('gulp-clean-css');
 const imagemin = require('gulp-imagemin');
 const babel = require('gulp-babel');
 const browserSync  = require('browser-sync').create();
+const sourcemaps = require('gulp-sourcemaps');
 
 // var pipeline = require('readable-stream').pipeline; // getting error
 
@@ -37,7 +38,9 @@ gulp.task('copysounds', function(done) {
 gulp.task('minify-css', function(done) {
   gulp.src('src/css/*.css')
     .pipe(concat('/css/styles.css'))
+    .pipe(sourcemaps.init())
     .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist'))
     .pipe(browserSync.stream());
   done();
@@ -46,11 +49,13 @@ gulp.task('minify-css', function(done) {
 // Transpile/Concat/uglify js files
 gulp.task('minify-js', function(done) {
   gulp.src('src/js/*.js')
+    .pipe(sourcemaps.init())
     .pipe(babel({
       presets: ['@babel/env']
     }))
     .pipe(concat('main.js'))
     .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/js/'))
     .pipe(browserSync.stream());
   done();

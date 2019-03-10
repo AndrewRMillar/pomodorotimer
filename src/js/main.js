@@ -103,13 +103,12 @@
 
   // This time using a callibrated setTimeout function
   const doTimer = function(length, oninstance, oncomplete) {
-    var steps = (length / 100) / 10,
+    var steps = length / 1000,
         speed = length / steps,
         count = 0,
         start = new Date().getTime();
 
     function instance() {
-      console.log(count, steps * 1000);
       if(count++ == steps * 1000) {
           oncomplete();
       }
@@ -128,7 +127,7 @@
       time.tot >= 1? time.tot--: time.tot = 0;
       timeEl.innerHTML = timeFormatted();
     },  () => {
-      console.log('times up');
+      // console.log('times up');
       incrementSession();
       notifyTimesUp();
       clear('time end');
