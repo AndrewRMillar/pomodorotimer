@@ -5,11 +5,11 @@ The page includes a relatively short explanation on the Pomodoro technique copie
 [Link](https://sl4rtyb4rtf4st.github.io/pomodorotimer/) to the github page version of the timer
 
 ## Gulp
-Changing the repo to a Gulp project, serving the page using github pages should then use the dist folder as the site has been moved to there. Still have to figure out how to do that. This [link](https://gist.github.com/cobyism/4730490) should give a good explanation on how to do that, but I haven't gotten round to it yet.
+Changing the repo to a Gulp project. Had to change the folder from where github pages was served using the following command `git subtree push --prefix dist origin gh-pages`, which worked like a charm. Seems like I have to keep executing that command when I change something but seems unlikely so I most be missing something. 
 
-To use the Gulp version run:
+To use the Gulp version run the following commands in the terminal after downloading the repo:
 ```sh
 npm install
 gulp
 ```
-You can run `gulp watch` when you wish to code the repo and have live reload functionality 
+You can run `gulp watch` when you wish to change the code and use live reload functionality.
