@@ -11,7 +11,7 @@ const sourcemaps = require('gulp-sourcemaps');
 
 // Copy all relavant files
 gulp.task('copyfiles', function(done) {
-  gulp.src('./src/*.html', './src/*.png', './src/*.ico', '/*.svg', './src/site.webmanifest', './src/*.xml')
+  gulp.src(['/src/*.svg', './src/*.ico', './src/*.png', './src/*.html', './src/site.webmanifest', './src/*.xml'])
     .pipe(gulp.dest('dist'))
     .pipe(browserSync.stream());
   done();
