@@ -33,6 +33,7 @@ a:hover {
 }
 .top-section {
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -91,6 +92,32 @@ section.timer {
   font-size: 6rem;
   padding: 0 2rem;
 }
+@media only screen and (max-width: 720px) {
+  header {
+    padding: 1rem;
+  }
+  .flex-col-cen, .flex-row-cen {
+    font-size: 0.8rem;
+  }
+  .top-timer {
+    width: 95%;
+    padding: 2rem 1rem;
+  }
+  .timeleft {
+    font-size: 5rem;
+  }
+}
+@media only screen and (max-width: 340px) {
+  .flex-col-cen, .flex-row-cen {
+    font-size: 0.8rem;
+  }
+  .timeleft {
+    font-size: 3.5rem;
+  }
+  .controls button {
+    font-size: .7rem;
+  }
+}
 button.set-timer, button.stop-timer, button.clear-timer {
   background-color: transparent;
   border: 1px solid white;
@@ -111,7 +138,7 @@ button.set-timer:active {
   border-top: 2px solid #b4b4b4;
 }
 .pomodoro h1 {
-  font-size: 4em;
+  font-size: 3em;
   font-weight: 500;
   color: #b5b9c3;
 }

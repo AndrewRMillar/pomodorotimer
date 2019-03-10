@@ -50,7 +50,7 @@ gulp.task('copysounds', function(done) {
 // Concat/Minify css
 gulp.task('minify-css', function(done) {
   gulp.src('src/css/*.css')
-    .pipe(concat('/css/styles.css'))
+    .pipe(concat('/css/style.css'))
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
