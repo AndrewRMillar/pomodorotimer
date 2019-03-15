@@ -5,6 +5,7 @@ html, body {
   color: #6f6f6e;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
 body {
   background: #fffafa;
@@ -39,17 +40,8 @@ a:hover {
   justify-content: space-evenly;
 }
 #pomodoro {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 .flex-col-cen {
