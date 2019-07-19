@@ -79,7 +79,7 @@
       new Notification("Pomodoro Timer", {body:"That were 4 pomodoro's, take a longer break. About 20 or 30 minutes", icon:"./img/tomato.jpg"});
       return;
     } else if(getSessionVal() % 3 === 0) { 
-      new Notification("Pomodoro Timer", {body:"You have completed tree pomodoro's, take a short break", icon:"./img/tomato.jpg"});
+      new Notification("Pomodoro Timer", {body:"You have completed three pomodoro's, take a short break", icon:"./img/tomato.jpg"});
       return;
     } else if(getSessionVal() % 2 === 0) { 
       new Notification("Pomodoro Timer", {body:"You have completed two pomodoro's, take a short break", icon:"./img/tomato.jpg"});
