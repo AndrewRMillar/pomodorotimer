@@ -1,5 +1,8 @@
 * {
   box-sizing: border-box;
+  --heading-color: #909090;
+  --heading-highlight-color: #FD4E4D;
+  --footer-background: #ff6767;
 }
 
 html, body {
@@ -13,7 +16,7 @@ body {
 }
 
 h1, h2 {
-  color: #b5b9c3;
+  color: var(--heading-color);
   font-size: 3em;
   font-weight: 500;
 }
@@ -106,14 +109,14 @@ button.set-timer:active {
 .pomodoro h1 {
   font-size: 4em;
   font-weight: 500;
-  color: #b5b9c3;
+  color: var(--heading-color);
 }
 .pomodoro h2 {
   font-size: 2.5em;
-  color: darkgrey;
+  color: var(--heading-color);
 }
 .pomodoro h2 span {
-  color: #FD4E4D;
+  color: var(--heading-highlight-color);
 }
 .pomodoro div {
   padding: 0 0 25px;
@@ -131,7 +134,7 @@ button.set-timer:active {
 }
 
 footer {
-  background-color: lightcoral;
+  background-color: var(--footer-background);
   color: white;
   width: 100vw;
   height: 5rem;
