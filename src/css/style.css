@@ -1,3 +1,9 @@
+
+:root {
+  --heading-color: #909090;
+  --heading-highlight-color: #FD4E4D;
+  --footer-background: #ff6767;
+}
 * {
   box-sizing: border-box;
 }
@@ -13,7 +19,7 @@ body {
 }
 
 h1, h2 {
-  color: #b5b9c3;
+  color: var(--heading-color);
   font-size: 3em;
   font-weight: 500;
 }
@@ -97,6 +103,66 @@ div.timer {
   font-size: 6rem;
   padding: 0 2rem;
 }
+button.set-timer, button.stop-timer, button.clear-timer {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 0.5em 2em;
+  transition: all 0.2s;
+  color: white;
+  border-radius: 3px;
+}
+button.set-timer:active {
+  transform: translateY(2px);
+}
+.pomodoro {
+  margin: 0;
+  text-align: center;
+  max-width: 750px;
+  padding: 3em;
+  color: #6f6f6e;
+  border-top: 2px solid #b4b4b4;
+}
+.pomodoro h1 {
+  font-size: 3em;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+.pomodoro h2 {
+  font-size: 2.5em;
+  color: var(--heading-color);
+}
+.pomodoro h2 span {
+  color: var(--heading-highlight-color);
+}
+.pomodoro div {
+  padding: 0 0 25px;
+  border-bottom: 1px dashed var(--heading-color);
+}
+.denied {
+  transition: all .5s;
+  margin: 0;
+  font-size: .8em;
+  height: auto;
+}
+.hide {
+  height: 0;
+  opacity: 0;
+}
+footer {
+  background-color: lightcoral;
+  color: white;
+  width: 100vw;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;  
+}
+footer a:link, footer a:visited, footer a:active {
+  color: white;
+}
+
 @media only screen and (max-width: 720px) {
   header {
     padding: 1rem;
@@ -122,64 +188,4 @@ div.timer {
   .controls button {
     font-size: .7rem;
   }
-}
-button.set-timer, button.stop-timer, button.clear-timer {
-  background-color: transparent;
-  border: 1px solid white;
-  padding: 0.5em 2em;
-  transition: all 0.2s;
-  color: white;
-  border-radius: 3px;
-}
-button.set-timer:active {
-  transform: translateY(2px);
-}
-.pomodoro {
-  margin: 0;
-  text-align: center;
-  max-width: 750px;
-  padding: 3em;
-  color: #6f6f6e;
-  border-top: 2px solid #b4b4b4;
-}
-.pomodoro h1 {
-  font-size: 3em;
-  font-weight: 500;
-  color: #b5b9c3;
-}
-.pomodoro h2 {
-  font-size: 2.5em;
-  color: darkgrey;
-}
-.pomodoro h2 span {
-  color: #FD4E4D;
-}
-.pomodoro div {
-  padding: 0 0 25px;
-  border-bottom: 1px dashed darkgrey;
-}
-.denied {
-  transition: all .5s;
-  margin: 0;
-  font-size: .8em;
-  height: auto;
-}
-.hide {
-  height: 0;
-  opacity: 0;
-}
-
-footer {
-  background-color: lightcoral;
-  color: white;
-  width: 100vw;
-  height: 5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;  
-}
-footer a:link, footer a:visited, footer a:active {
-  color: white;
 }
